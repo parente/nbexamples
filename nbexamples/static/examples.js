@@ -136,11 +136,11 @@ define([
             .attr("data-target", "#modal-" + this.hash(this.data.filepath))
             .text('Use'));
         row.append(btns);
-        row.append(this.make_modal(this.data.filepath));
+        row.append(this.make_modal(this.data.filepath, this.data.basename));
         this.element.empty().append(row);
     };
 
-    Example.prototype.make_modal = function(example_id) {
+    Example.prototype.make_modal = function(example_id, example_name) {
         var that = this;
         var modal_dialog;
         var modal_content;
@@ -203,6 +203,7 @@ define([
             .attr("type", "text")
             .attr("name", "dest")
             .attr("id", "dest-" + this.hash(example_id))
+            .attr("value", example_name)
         hidden_input = $('<input/>')
             .attr("type", "hidden")
             .attr("name", "example_id")
